@@ -1,1 +1,3 @@
-# acit2420-assignment01
+# Creating a Remote Server with Digital Ocean
+<p><br/>
+##Step 1: Test
