@@ -15,6 +15,7 @@ This guide will take you step by step on creating an Arch Linux server on Digita
 
 ```bash
 ssh-keygen -t ed25519 -c "your_email@example.com"
+```
 
 <p>This command would generate a SSH key using the ed25519 algorithm. 
 Save the key to the default location when prompted. </p>
