@@ -103,19 +103,19 @@ Be sure to change your `user-name`, `group-name`, and enter the created `ssh-aut
 
 `Users` specify we are adding a user
 
-* `name` specify username
+* `name` represents the username
 
-* `primary_group` specifies the primary group
+* `primary_group` represents the primary group
 
-* `groups` specify additional group
+* `groups` represents additional group
 
 * `sudo: ['ALL=(ALL) NOPASSWD:ALL']` allows a user unrestricted sudo access
 
-* `shell` specifies the path of the shell
+* `shell` represents the path of the shell
 
-* `ssh-authorized-keys` specifies the keys that are added to the user's authorized keys file
+* `ssh-authorized-keys` represents user's authorized keys 
 
-* `ssh-ed25519 <Your Public Key> <Your Email>` is your public key
+* `ssh-ed25519 <Your Public Key> <Your Email>` represents your public key
 
 * `packages` specify installing the following packages on the first boot
 
