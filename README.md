@@ -59,23 +59,87 @@ ls
 
 ![Relative](/assets/droplet_002.png)
 
-### Step 3: Upload an Arch Linux custom image by clicking `Add image`
+### Step 3: Upload an Arch Linux custom image by clicking `Add image`:
 
 ![Relative](/assets/droplet_003.png)
 
-### 
+### Step 4: Select `Upoad Image` of chosen Arch Linux image:
 
 ![Relative](/assets/droplet_004.png)
 
+### Step 5: Select Droplet Type and CPU options of choice:
+
 ![Relative](/assets/droplet_005.png)
 
+### Step 6: Add SSH Key by selecting the `SSH Key` authentication method:
+
 ![Relative](/assets/droplet_006.png)
+
+### Step 7: Enter the below code to `Add Initialization scripts` under `Advanced Options`:
+```bash
+#cloud-config
+users:
+  - name: user-name #change me
+    primary_group: group-name #change me
+    groups: wheel
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh-authorized-keys:
+      - ssh-ed25519 ...
+
+packages:
+  - ripgrep
+  - rsync
+  - neovim
+  - fd
+  - less
+  - man-db
+  - bash-completion
+  - tmux
+
+disable_root: true
+```
+Be sure to change your `user-name`, `group-name`, and enter the created `ssh-authorized-keys
+
+`Users` specify we are adding a user
+
+* `name` specify username
+
+* `primary_group` specifies the primary group
+
+* `groups` specify additional group
+
+* `sudo: ['ALL=(ALL) NOPASSWD:ALL']` allows a user unrestricted sudo access
+
+* `shell` specifies the path of the shell
+
+* `ssh-authorized-keys` specifies the keys that are added to the user's authorized keys file
+
+* `ssh-ed25519 <Your Public Key> <Your Email>` is your public key
+
+* `packages` specify installing the following packages on the first boot
+
+* `disable_root: true` specify we disable connect to the droplet via SSH as root user
+</br>
+
 
 ![Relative](/assets/droplet_007.png)
 
 
+
 ## Connect using SSH keys
 
-## References
-https://wiki.archlinux.org/title/Cloud-init
+### Step 1: Copy the Droplet's IPv4 Address from Digital Ocean
+### Step 2: Open your terminal and run the command:
+```bash
+ssh -i ~/.ssh/id_ed25519 <user-name-here>@<ip-address-here>
+```
+### Step 3: Connect to the drop using the command:
+```bash
+ssh <hostname>
+```
 
+## References
+[Cloud-Init Set-up](https://wiki.archlinux.org/title/Cloud-init)</br>
+[Cloud Configuration for Intial Server Setup](https://www.digitalocean.com/community/tutorials/how-to-use-cloud-config-for-your-initial-server-setup)</br>
+[SSH Connection](https://www.digitalocean.com/community/tutorials/how-to-use-ssh-to-connect-to-a-remote-server)
